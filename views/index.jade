@@ -1,0 +1,62 @@
+extends layout
+
+block content
+    h1= "Clinica OnLine"
+    p Bem vindo à sua Clínica online!
+
+
+    //WRAPPER
+    #wrapper
+
+        // ADD CLIENTES
+        h1 Agendamento Online
+        br  
+        h2 Agendar Consulta
+        #addClient
+            fieldset
+                input#inputClientFullname(type='text', placeholder='Nome')
+                input#inputClientTelefone(type='text', placeholder='Telefone')
+                input#inputClientAgendamentoData(type='date')
+                input#inputClientAgendamentoHora(type='time')
+                br    
+                button#btnAddClient Add Cliente  
+                br
+                br
+                br
+                br
+        
+    //WRAPPER
+    #wrapper
+
+        // TABELA COM LISTA DOS CLIENTES 
+        h2 Atendimentos Agendados
+        #userList
+            table
+                thead
+                    th Cliente
+                    th Telefone
+                    th Agendamento
+                    th Cancelar Atendimento?
+                tbody
+
+
+         // INFORMACOES CLIENTES 
+        #userInfo
+            h2 Informaçoes do Cliente 
+            p
+                strong Cliente:
+                |  <span id='clientInfoName'></span>
+                br
+                strong Telefone:
+                |  <span id='clientInfoTelefone'></span>
+                br
+                strong Agendamento:
+                |  <span id='clientInfoAgendamentoData'></span>
+                |  <span id='clientInfoAgendamentoHora'></span>
+                br
+
+
+
+        
+    
+
