@@ -11,7 +11,6 @@ var monk = require('monk');
 var db = monk('localhost:27017/clinica');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var clients = require('./routes/clients');
 
 
@@ -35,7 +34,6 @@ app.use(function(req,res,next){
 });
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/clients', clients);
 
 /// catch 404 and forwarding to error handler
@@ -60,7 +58,7 @@ if (app.get('env') === 'development') {
 }
 
 // production error handler
-// no stacktraces leaked to user
+// no stacktraces leaked to client
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {

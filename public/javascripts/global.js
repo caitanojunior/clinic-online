@@ -20,7 +20,7 @@ function populateTable() {
     // jQuery AJAX call for JSON
     $.getJSON( '/clients/clientlist', function( data ) {
 		
-		// Stick our user data array into a userlist variable in the global object
+		// Stick our client data array into a clientlist variable in the global object
 		clientListData = data;
 		
         // For each item in our JSON, add a table row and cells to the content string
@@ -28,13 +28,13 @@ function populateTable() {
             tableContent += '<tr>';
             tableContent += '<td><a href="#" class="linkshowclient" rel="' + this.fullname + '">' + this.fullname + '</a></td>';									
             tableContent += '<td>' + this.phone + '</td>';
-            tableContent += '<td>' + this.schedulingDate + ' ' + '<font color = "#FF0000"><b>' + this.schedulingHour + '</b></font>'+ '</td>';
+            tableContent += '<td>' + this.schedulingDate + ' ' + '<b>' + this.schedulingHour + '</b>'+ '</td>';
             tableContent += '<td><a href="#" class="linkdeleteclient" rel="' + this._id + '">Cancel</a></td>';
             tableContent += '</tr>';
         });
 
         // Inject the whole content string into our existing HTML table
-        $('#userList table tbody').html(tableContent);
+        $('#clientList table tbody').html(tableContent);
     }); 
 };
 
@@ -55,7 +55,7 @@ function populateTable() {
 
 		//Populate Info Box
 		$('#clientInfoName').text(thisClientObject.fullname);
-		$('#clientInfoPhone').text(hisClientObject.phone);
+		$('#clientInfoPhone').text(thisClientObject.phone);
 		$('#clientInfoSchedulingDate').text(thisClientObject.schedulingDate);
         $('#clientInfoSchedulingHour').text(thisClientObject.schedulingHour);
 	};
@@ -73,7 +73,7 @@ function addClient(event) {
     // Check and make sure errorCount's still at zero
     if(errorCount === 0) {
 
-        // If it is, compile all user info into one object
+        // If it is, compile all client info into one object
         var newClient = {
             'fullname': $('#addClient fieldset input#inputClientFullname').val(),
             'phone': $('#addClient fieldset input#inputClientPhone').val(),
@@ -123,7 +123,7 @@ function deleteClient(event) {
     // Pop up a confirmation dialog
     var confirmation = confirm('Are you sure you want to cancel this scheduling?');
 
-    // Check and make sure the user confirmed
+    // Check and make sure the client confirmed
     if (confirmation === true) {
 
         // If they did, do our delete
@@ -155,10 +155,10 @@ function deleteClient(event) {
 };
 	
 	// Fullname link click
-    $('#userList table tbody').on('click', 'td a.linkshowclient', showClientInfo);
+    $('#clientList table tbody').on('click', 'td a.linkshowclient', showClientInfo);
 
     // Add Client button click
     $('#btnAddClient').on('click', addClient);
 
     // Delete Client link click
-    $('#userList table tbody').on('click', 'td a.linkdeleteclient', deleteClient);
+    $('#clientList table tbody').on('click', 'td a.linkdeleteclient', deleteClient);
