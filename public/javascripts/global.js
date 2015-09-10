@@ -29,7 +29,7 @@ function populateTable() {
             tableContent += '<td><a href="#" class="linkshowclient" rel="' + this.fullname + '">' + this.fullname + '</a></td>';									
             tableContent += '<td>' + this.telefone + '</td>';
             tableContent += '<td>' + this.agendamentoData + ' ' + '<font color = "#FF0000"><b>' + this.agendamentoHora + '</b></font>'+ '</td>';
-            tableContent += '<td><a href="#" class="linkdeleteclient" rel="' + this._id + '">Cancelar</a></td>';
+            tableContent += '<td><a href="#" class="linkdeleteclient" rel="' + this._id + '">Cancelar Atendimento</a></td>';
             tableContent += '</tr>';
         });
 
@@ -113,9 +113,52 @@ function addClient(event) {
         return false;
     }
 };
+
+
+// Delete Client
+function deleteClient(event) {
+
+    event.preventDefault();
+
+    // Pop up a confirmation dialog
+    var confirmation = confirm('Are you sure you want to delete this user?');
+
+    // Check and make sure the user confirmed
+    if (confirmation === true) {
+
+        // If they did, do our delete
+        $.ajax({
+            type: 'DELETE',
+            url: '/clients/deleteclient/' + $(this).attr('rel')
+        }).done(function( response ) {
+
+            // Check for a successful (blank) response
+            if (response.msg === '') {
+            }
+            else {
+                alert('Error: ' + response.msg);
+            }
+
+            // Update the table
+            populateTable();
+
+        });
+
+    }
+    else {
+
+        // If they said no to the confirm, do nothing
+        return false;
+
+    }
+
+};
 	
 	// Fullname link click
     $('#userList table tbody').on('click', 'td a.linkshowclient', showClientInfo);
 
     // Add Client button click
     $('#btnAddClient').on('click', addClient);
+
+    // Delete Client link click
+    $('#userList table tbody').on('click', 'td a.linkdeleteclient', deleteClient);
