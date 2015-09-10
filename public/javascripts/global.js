@@ -27,9 +27,9 @@ function populateTable() {
         $.each(data, function(){
             tableContent += '<tr>';
             tableContent += '<td><a href="#" class="linkshowclient" rel="' + this.fullname + '">' + this.fullname + '</a></td>';									
-            tableContent += '<td>' + this.telefone + '</td>';
-            tableContent += '<td>' + this.agendamentoData + ' ' + '<font color = "#FF0000"><b>' + this.agendamentoHora + '</b></font>'+ '</td>';
-            tableContent += '<td><a href="#" class="linkdeleteclient" rel="' + this._id + '">Cancelar Atendimento</a></td>';
+            tableContent += '<td>' + this.phone + '</td>';
+            tableContent += '<td>' + this.schedulingDate + ' ' + '<font color = "#FF0000"><b>' + this.schedulingHour + '</b></font>'+ '</td>';
+            tableContent += '<td><a href="#" class="linkdeleteclient" rel="' + this._id + '">Cancel</a></td>';
             tableContent += '</tr>';
         });
 
@@ -38,7 +38,7 @@ function populateTable() {
     }); 
 };
 
-// funcao que mostra informacoes do cliente selecionado
+// Info function that shows the selected customer
 	function showClientInfo(event) {
 
 		// Prevent Link from Firing
@@ -55,9 +55,9 @@ function populateTable() {
 
 		//Populate Info Box
 		$('#clientInfoName').text(thisClientObject.fullname);
-		$('#clientInfoTelefone').text(thisClientObject.telefone);
-		$('#clientInfoAgendamentoData').text(thisClientObject.agendamentoData);
-        $('#clientInfoAgendamentoHora').text(thisClientObject.agendamentoHora);
+		$('#clientInfoPhone').text(hisClientObject.phone);
+		$('#clientInfoSchedulingDate').text(thisClientObject.schedulingDate);
+        $('#clientInfoSchedulingHour').text(thisClientObject.schedulingHour);
 	};
 
 	// Add Client
@@ -76,9 +76,9 @@ function addClient(event) {
         // If it is, compile all user info into one object
         var newClient = {
             'fullname': $('#addClient fieldset input#inputClientFullname').val(),
-            'telefone': $('#addClient fieldset input#inputClientTelefone').val(),
-            'agendamentoData': $('#addClient fieldset input#inputClientAgendamentoData').val(),
-            'agendamentoHora': $('#addClient fieldset input#inputClientAgendamentoHora').val()
+            'phone': $('#addClient fieldset input#inputClientPhone').val(),
+            'schedulingDate': $('#addClient fieldset input#inputClientSchedulingDate').val(),
+            'schedulingHour': $('#addClient fieldset input#inputClientSchedulingHour').val()
         }
 
         // Use AJAX to post thisClientObject object to our addclient service
@@ -109,7 +109,7 @@ function addClient(event) {
     }
     else {
         // If errorCount is more than 0, error out
-        alert('Por favor preencha todos os campos!');
+        alert('Please fill in all fields!');
         return false;
     }
 };
@@ -121,7 +121,7 @@ function deleteClient(event) {
     event.preventDefault();
 
     // Pop up a confirmation dialog
-    var confirmation = confirm('Are you sure you want to delete this user?');
+    var confirmation = confirm('Are you sure you want to cancel this scheduling?');
 
     // Check and make sure the user confirmed
     if (confirmation === true) {

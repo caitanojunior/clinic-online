@@ -1,25 +1,25 @@
 extends layout
 
 block content
-    h1= "Clinica OnLine"
-    p Bem vindo à sua Clínica online!
+    h1= "OnLine Clinic"
+    p Welcome to your online Clinic!
 
 
     //WRAPPER
     #wrapper
 
-        // ADD CLIENTES
-        h1 Agendamento Online
+        // ADD CLIENTS
+        h1 Online Scheduling 
         br  
-        h2 Agendar Consulta
+        h2 schedule Query
         #addClient
             fieldset
-                input#inputClientFullname(type='text', placeholder='Nome')
-                input#inputClientTelefone(type='text', placeholder='Telefone')
-                input#inputClientAgendamentoData(type='date')
-                input#inputClientAgendamentoHora(type='time')
+                input#inputClientFullname(type='text', placeholder='Name')
+                input#inputClientPhone(type='text', placeholder='Phone')
+                input#inputClientSchedulingDate(type='date')
+                input#inputClientSchedulingHour(type='time')
                 br    
-                button#btnAddClient Add Cliente  
+                button#btnAddClient Add Client
                 br
                 br
                 br
@@ -28,31 +28,31 @@ block content
     //WRAPPER
     #wrapper
 
-        // TABELA COM LISTA DOS CLIENTES 
-        h2 Atendimentos Agendados
+        // TABLE WITH LIST OF CLIENTS 
+        h2 Scheduled Calls
         #userList
             table
                 thead
-                    th Cliente
-                    th Telefone
-                    th Agendamento
-                    th Cancelar Atendimento?
+                    th Client
+                    th Phone
+                    th Scheduled
+                    th Cancel Service?
                 tbody
 
 
-         // INFORMACOES CLIENTES 
+         // INFORMATION FROM CLIENT
         #userInfo
-            h2 Informaçoes do Cliente 
+            h2 Information from Client
             p
-                strong Cliente:
+                strong Client:
                 |  <span id='clientInfoName'></span>
                 br
-                strong Telefone:
-                |  <span id='clientInfoTelefone'></span>
+                strong Phone:
+                |  <span id='clientInfoPhone'></span>
                 br
-                strong Agendamento:
-                |  <span id='clientInfoAgendamentoData'></span>
-                |  <span id='clientInfoAgendamentoHora'></span>
+                strong Scheduled:
+                |  <span id='clientInfoScheduledDate'></span>
+                |  <span id='clientInfoScheduledHour'></span>
                 br
 
 
