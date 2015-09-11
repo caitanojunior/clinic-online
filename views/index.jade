@@ -1,7 +1,10 @@
 extends layout
 
 block content
-    h1= "OnLine Clinic"
+
+    <img src='images/estetoscopio.jpg' />
+
+    h1= "OnLine Clinic" 
     p Welcome to your online Clinic!
 
 
@@ -9,9 +12,8 @@ block content
     #wrapper
 
         // ADD CLIENTS
-        h1 Online Scheduling 
-        br  
-        h2 schedule Query
+        h1 Scheduling
+        h2 Schedule query
         #addClient
             fieldset
                 input#inputClientFullname(type='text', placeholder='Name')
@@ -22,14 +24,13 @@ block content
                 button#btnAddClient Add Client
                 br
                 br
-                br
-                br
+                br 
         
     //WRAPPER
     #wrapper
 
         // TABLE WITH LIST OF CLIENTS 
-        h2 Scheduled Calls
+        h2 List of schedules
         #clientList
             table
                 thead
