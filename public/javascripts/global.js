@@ -114,6 +114,21 @@ function addClient(event) {
     }
 };
 
+// Edit Client
+function editClient(event) {
+    event.preventDefault();
+
+    name = document.getElementById('clientInfoName').innerHTML;
+    phone = document.getElementById('clientInfoPhone').innerHTML;
+    schedulingDate = document.getElementById('clientInfoSchedulingDate').innerHTML;
+    schedulingHour = document.getElementById('clientInfoSchedulingHour').innerHTML;
+
+    $('#addClient fieldset #inputClientFullname').val(name);
+    $('#addClient fieldset #inputClientPhone').val(phone);
+    $('#addClient fieldset #inputClientSchedulingDate').val(schedulingDate);
+    $('#addClient fieldset #inputClientSchedulingHour').val(schedulingHour);   
+};
+
 
 // Delete Client
 function deleteClient(event) {
@@ -153,6 +168,7 @@ function deleteClient(event) {
     }
 
 };
+
 	
 	// Fullname link click
     $('#clientList table tbody').on('click', 'td a.linkshowclient', showClientInfo);
@@ -162,3 +178,6 @@ function deleteClient(event) {
 
     // Delete Client link click
     $('#clientList table tbody').on('click', 'td a.linkdeleteclient', deleteClient);
+
+    // Edit Client button click
+    $('#btnEdit').on('click', editClient);
